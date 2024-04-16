@@ -65,15 +65,15 @@ def fast_align_MED(S, T, MED={}):
   min_distance = min(insertion[0], deletion[0], substitution[0])
 
   if min_distance == insertion[0]:
-      aligned_S = "-" + insertion[1]
-      aligned_T = T[0] + insertion[2]
+      align_S = "-" + insertion[1]
+      align_T = T[0] + insertion[2]
   elif min_distance == deletion[0]:
-      aligned_S = S[0] + deletion[1]
-      aligned_T = "-" + deletion[2]
+      align_S = S[0] + deletion[1]
+      align_T = "-" + deletion[2]
   else:
-      aligned_S = S[0] + substitution[1]
-      aligned_T = T[0] + substitution[2]
+      align_S = S[0] + substitution[1]
+      align_T = T[0] + substitution[2]
 
-  MED[(S, T)] = (min_distance + 1, aligned_S, aligned_T)
+  MED[(S, T)] = (min_distance + 1, align_S, align_T)
 
   return MED[(S, T)]
